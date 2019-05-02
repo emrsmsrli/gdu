@@ -5,12 +5,12 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(main
         main.cpp
-        encrypted.h
+        encryption/encrypted.h
         lazy.h
         rand.h
         bytes.h
         range.h
-        sfinae.h encryptor.h)
+        sfinae.h encryption/encryptor.h)
 
 target_compile_features(main PRIVATE
         cxx_constexpr

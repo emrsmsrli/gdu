@@ -5,7 +5,7 @@
 #include <iostream>
 #include <string>
 
-#include "encrypted.h"
+#include "encryption/encrypted.h"
 #include "range.h"
 
 int main(int /*argc*/, char** /*argv*/)

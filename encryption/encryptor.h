@@ -5,8 +5,8 @@
 #ifndef UNTITLED_ENCRYPTOR_H
 #define UNTITLED_ENCRYPTOR_H
 
-#include "rand.h"
-#include "bytes.h"
+#include "../rand.h"
+#include "../bytes.h"
 
 template<typename T> class encrypted;
 
