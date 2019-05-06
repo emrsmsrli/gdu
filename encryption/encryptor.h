@@ -23,23 +23,23 @@ public:
     T decrypt(T data) const { return (data + encryption_key) ^ encryption_key; }
 };
 
-template<typename T>
-class encryptor<T, std::enable_if_t<is_string_v<T>>>
+template<>
+class encryptor<std::string>
 {
-    friend class encrypted<T>;
+    friend class encrypted<std::string>;
 
     unsigned char encryption_key = random<unsigned char>();
     encryptor() = default;
 
 public:
-    T encrypt(T data) const
+    std::string encrypt(std::string data) const
     {
         std::for_each(data.begin(), data.end(), [&](char &c) { return c ^= encryption_key; });
         std::reverse(data.begin(), data.end());
         return data;
     }
 
-    T decrypt(T data) const { return encrypt(data); }
+    std::string decrypt(std::string data) const { return encrypt(data); }
 };
 
 template<typename T>
