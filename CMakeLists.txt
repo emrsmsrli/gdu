@@ -6,11 +6,11 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(main
         main.cpp
         encryption/encrypted.h
-        lazy.h
+        encryption/encryptor.h
         rand.h
         bytes.h
         range.h
-        sfinae.h encryption/encryptor.h)
+        sfinae.h)
 
 target_compile_features(main PRIVATE
         cxx_constexpr
@@ -21,7 +21,7 @@ target_compile_features(main PRIVATE
         cxx_variable_templates
         )
 
-find_package(fmt)
-target_link_libraries(main fmt::fmt)
+# find_package(fmt)
+# target_link_libraries(main fmt::fmt)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -O0")
