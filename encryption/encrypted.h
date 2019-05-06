@@ -1,6 +1,3 @@
-//
-// Created by Emre Şimşirli on 2019-03-23.
-//
 
 #ifndef UNTITLED_ENCRYPTED_H
 #define UNTITLED_ENCRYPTED_H

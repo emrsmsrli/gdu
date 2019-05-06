@@ -1,6 +1,3 @@
-//
-// Created by Emre Şimşirli on 2019-04-29.
-//
 
 #ifndef UNTITLED_ENCRYPTOR_H
 #define UNTITLED_ENCRYPTOR_H

@@ -1,6 +1,3 @@
-//
-// Created by Emre Şimşirli on 2019-03-28.
-//
 
 #ifndef UNTITLED_RAND_H
 #define UNTITLED_RAND_H
