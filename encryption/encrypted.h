@@ -15,9 +15,6 @@ class encrypted
 {
     static_assert(std::is_arithmetic_v<T>, "only built-in types are supported");
 
-    encryptor<T> encryptor_;
-    T data_;
-
 public:
     encrypted() : encrypted(0) {}
     encrypted(T data) { set(data); }
@@ -43,6 +40,42 @@ public:
     encrypted<T>& operator-=(T other) { set(get() - other); return *this; }
     encrypted<T>& operator*=(T other) { set(get() * other); return *this; }
     encrypted<T>& operator/=(T other) { set(other == 0 ? 0 : get() / other); return *this; }
+
+    encrypted<T>& operator++()
+    {
+        check_integral();
+        *this += 1;
+        return *this;
+    }
+
+    encrypted<T> operator++(int) const
+    {
+        check_integral();
+        auto temp = *this;
+        *this += 1;
+        return temp;
+    }
+
+    encrypted<T>& operator--()
+    {
+        check_integral();
+        *this -= 1;
+        return *this;
+    }
+
+    encrypted<T> operator--(int) const
+    {
+        check_integral();
+        auto temp = *this;
+        *this -= 1;
+        return temp;
+    }
+
+private:
+    encryptor<T> encryptor_;
+    T data_;
+
+    void check_integral() const { static_assert(std::is_integral_v<T>, "floating points are not supported"); }
 };
 
 template<typename T>
@@ -57,9 +90,6 @@ bool operator!=(const encrypted<T>& e1, const encrypted<T>& e2) { return !(e1 ==
 template<>
 class encrypted<std::string>
 {
-    encryptor<std::string> encryptor_;
-    std::string data_;
-
 public:
     encrypted() : encrypted("") {}
     encrypted(const std::string& data) { set(data); }
@@ -83,6 +113,10 @@ public:
 
     encrypted<std::string>& operator+=(const std::string& data) { set(get() + data); return *this; }
     encrypted<std::string>& operator+=(const char* data) { set(get() + data); return *this; }
+
+private:
+    encryptor<std::string> encryptor_;
+    std::string data_;
 };
 
 #endif //UNTITLED_ENCRYPTED_H
